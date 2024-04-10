@@ -1,12 +1,15 @@
 class EuclideanAlgorithm:
-    """Compute the GCD of two integers using the Euclidean Algorithm."""
+    """Compute the GCD and LCM of two integers."""
+
     def gcd(self, a, b):
-        # Continue the loop until b becomes 0
+        """Compute the GCD using the Euclidean Algorithm."""
         while b != 0:
-            # Replace a with b and b with the remainder of a divided by b
             a, b = b, a % b
-            # When b is 0, a contains the GCD
         return a
+
+    def lcm(self, a, b):
+        """Compute the Least Common Multiple (LCM) using the GCD."""
+        return abs(a * b) // self.gcd(a, b)
 
 def get_input(prompt):
     """This function prompts the user for input and checks for non-negative integers."""
@@ -23,12 +26,17 @@ def get_input(prompt):
             # Catch the ValueError if the input is not an integer
             print("Invalid input. Please enter a non-negative integer.")
 
-euclidean = EuclideanAlgorithm()# Create an instance of the EuclideanAlgorithm class
+euclidean = EuclideanAlgorithm()  # Create an instance of the EuclideanAlgorithm class
 
 # Get user input for the two numbers
-print("Greatest Common Divisor Calculation using the Euclidean Algorithm.")
+print("Calculation using the Euclidean Algorithm.")
 number1 = get_input("Enter the first non-negative integer: ")
 number2 = get_input("Enter the second non-negative integer: ")
 
-result = euclidean.gcd(number1, number2)
-print(f"The GCD of {number1} and {number2} is: {result}")# Print the result
+# Calculate and print the GCD
+gcd_result = euclidean.gcd(number1, number2)
+print(f"The GCD of {number1} and {number2} is: {gcd_result}")
+
+# Calculate and print the LCM
+lcm_result = euclidean.lcm(number1, number2)
+print(f"The LCM of {number1} and {number2} is: {lcm_result}")
